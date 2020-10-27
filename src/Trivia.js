@@ -1,21 +1,16 @@
 import React, {setState} from "react";
-import "./App.css";
-import { triviaData } from "./data";
+import Container from './Reader';
 
-export const Trivia = () => {
-  const [stuff, setStuff] = setState(triviaData)
+const Trivia = (props) => {
+
+  let data = props.data;
+    if(data)
+        console.log(data, 'aaa')
   return (
-      <div>
-      {triviaData.map((data, key) => {
-        return (
-          <div key={key}>
-          
-            {data.question}
-            {data.incorrect}
-            {data.correct}
-          </div>
-        );
-      })}
-      </div>
-  );
-};
+         <>
+          hi
+         </>
+     )
+}
+
+export default Trivia;
