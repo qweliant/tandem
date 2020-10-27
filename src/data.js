@@ -1,4 +1,4 @@
-[
+export const triviaData = [
   {
     "question": "What was Tandem previous name?",
     "incorrect": ["Tandem", "Burger Shack", "Extraordinary Humans"],
