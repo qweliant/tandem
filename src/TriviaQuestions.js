@@ -9,10 +9,8 @@ const TriviaQuestions = ({ question, answer, rightAnswer }) => {
     arr = arr.sort(() => Math.random() - 0.5);
     let array = arr;
     
-    console.log(array)
     if (!question) return <div />;
     const onChange = (e) => {
-    console.log(e.target.value)
       if (e.target.value === rightAnswer) {
         console.log("Correct",value );
       } else {

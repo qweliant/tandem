@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { triviaData } from "./data";
-import "antd/dist/antd.css";
 import TriviaQuestions from './TriviaQuestions';
+
 
 const HomePageHeader = () => {
   return (
@@ -15,8 +15,19 @@ const Trivia = () => {
   const [triviaDataState] = useState(triviaData);
   const [count, setCount] = useState(0);
   console.log(count)
+  console.log(triviaData.length)
 
   
+  function onClick(){
+    if(count < triviaData.length - 1) {
+      console.log("not fin")
+      setCount(count + 1)
+    } else{
+      console.log(" fin")
+
+    }
+    
+  }
   return (
     <>
       <HomePageHeader />
@@ -27,7 +38,7 @@ const Trivia = () => {
         rightAnswer={triviaDataState[count].correct}
       />
 
-      <button  onClick={() => setCount(count + 1)}> Click me </button>
+      <button  onClick={onClick}> Click me </button>
     </>
   );
 };
