@@ -1,11 +1,11 @@
 import './App.css';
-import Container from './Reader';
+import Trivia from './Trivia'
 
 function App() {
   return (
     <div className="App">
 
-      <Container/>
+      <Trivia />
     </div>
   );
 }
