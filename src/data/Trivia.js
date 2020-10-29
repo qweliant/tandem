@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { triviaData } from "./data";
+import { triviaData } from "./data/data";
 import TriviaQuestions from './TriviaQuestions';
 
 
