@@ -1,5 +1,5 @@
 import './App.css';
-import Trivia from './Trivia'
+import Trivia from './Components/Trivia'
 
 function App() {
   return (
