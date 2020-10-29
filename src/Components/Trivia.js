@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { triviaData } from "../data/data";
 import TriviaQuestions from "./TriviaQuestions";
 import Progression from "./Progress";
+import { useHistory } from "react-router-dom";
+
+
 
 const HomePageHeader = () => {
   return (
@@ -11,21 +14,31 @@ const HomePageHeader = () => {
   );
 };
 
+
+let triviaDataState = triviaData;
+triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
+const array = triviaDataState;
+
 const Trivia = () => {
-  const [triviaDataState] = useState(triviaData);
+  // const [triviaDataState] = useState(triviaData);
+
+
   const [count, setCount] = useState(0);
   const [percent, setPrecent] = useState(1);
   const [buttonText, setButtonText] = useState("Next");
+  const history = useHistory();
 
   function onClick() {
-    if (count < triviaData.length - 1) {
-      console.log("not fin");
+    if (count < 10 - 1) {
       setCount(count + 1);
 
       setPrecent(count + 2);
     } else {
-      console.log(" fin");
+
+      let path = `results`;
       setButtonText("Done!")
+      triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
+      history.push(path);
     }
   }
 
@@ -34,9 +47,9 @@ const Trivia = () => {
       <HomePageHeader />
       <Progression percent={percent} />
       <TriviaQuestions
-        question={triviaDataState[count].question}
-        answer={triviaDataState[count].incorrect}
-        rightAnswer={triviaDataState[count].correct}
+        question={array[count].question}
+        answer={array[count].incorrect}
+        rightAnswer={array[count].correct}
       />
 
       <button onClick={onClick}> {buttonText} </button>
