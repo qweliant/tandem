@@ -38,7 +38,7 @@ const Trivia = () => {
         rightAnswer={triviaDataState[count].correct}
       />
 
-      <button  onClick={onClick}> Click me </button>
+      <button  onClick={onClick}> Click me </button> 
     </>
   );
 };

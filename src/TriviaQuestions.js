@@ -4,7 +4,7 @@ import { Card, Radio } from "antd";
 
 const TriviaQuestions = ({ question, answer, rightAnswer }) => {
     const [value] = useState(0);
-    const [score, setScore] = useState(0);
+    // const [score, setScore] = useState(0);
     let arr = [answer[0], answer[1], answer[2], rightAnswer];
     arr = arr.sort(() => Math.random() - 0.5);
     let array = arr;
