@@ -1,23 +1,24 @@
 import React, {useState} from 'react'
-import { Card, Radio, Checkbox } from "antd";
+import { Card, Radio } from "antd";
 
 
 const TriviaQuestions = ({ question, answer, rightAnswer }) => {
-    const [value, setValue] = useState(0);
+    const [value] = useState(0);
+    const [score, setScore] = useState(0);
     let arr = [answer[0], answer[1], answer[2], rightAnswer];
     arr = arr.sort(() => Math.random() - 0.5);
-    const [array] = useState(arr);
-  
+    let array = arr;
+    
+    console.log(array)
     if (!question) return <div />;
     const onChange = (e) => {
-      setValue(e.target.value);
+    console.log(e.target.value)
       if (e.target.value === rightAnswer) {
-        console.log("Correct");
+        console.log("Correct",value );
       } else {
-        console.log("haha you mad STOOPED!!");
+        console.log("haha you mad STOOPED!!", value);
       }
     };
-    console.log(value);
   
     const radioStyle = {
       display: "block",
@@ -31,7 +32,7 @@ const TriviaQuestions = ({ question, answer, rightAnswer }) => {
           <tr>
             <td>
               <Card title={question} bordered={false}>
-                <Radio.Group onChange={onChange} value={value}>
+                <Radio.Group onChange={onChange} >
                   <Radio style={radioStyle} value={array[0]}>
                     {array[0]}
                   </Radio>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { triviaData } from "./data";
-import { List } from "antd";
 import "antd/dist/antd.css";
 import TriviaQuestions from './TriviaQuestions';
 
@@ -14,26 +13,21 @@ const HomePageHeader = () => {
 
 const Trivia = () => {
   const [triviaDataState] = useState(triviaData);
-  const [update, setUpdate] = useState(0);
+  const [count, setCount] = useState(0);
+  console.log(count)
 
+  
   return (
     <>
       <HomePageHeader />
-      <List
-        itemLayout="vertical"
-        bordered
-        dataSource={triviaDataState}
-        renderItem={(data) => (
-          <List.Item>
-            <TriviaQuestions
-              question={data.question}
-              answer={data.incorrect}
-              rightAnswer={data.correct}
-            />
-          </List.Item>
-        )}
+
+      <TriviaQuestions
+        question={triviaDataState[count].question}
+        answer={triviaDataState[count].incorrect}
+        rightAnswer={triviaDataState[count].correct}
       />
-      <button  onClick={() => setCount(count + 1)> Click me </button>
+
+      <button  onClick={() => setCount(count + 1)}> Click me </button>
     </>
   );
 };
