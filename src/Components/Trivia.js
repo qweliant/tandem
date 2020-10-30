@@ -3,8 +3,7 @@ import { triviaData } from "../data/data";
 import TriviaQuestions from "./TriviaQuestions";
 import Progression from "./Progress";
 import { useHistory } from "react-router-dom";
-
-
+import { notification } from 'antd';
 
 const HomePageHeader = () => {
   return (
@@ -14,10 +13,9 @@ const HomePageHeader = () => {
   );
 };
 
-
 let triviaDataState = triviaData;
 triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
-const array = triviaDataState;
+let array = triviaDataState;
 
 const Trivia = () => {
   // const [triviaDataState] = useState(triviaData);
@@ -29,10 +27,16 @@ const Trivia = () => {
   const history = useHistory();
 
   function onClick() {
+    notification.open({
+      message: 'Correct Answer',
+      description:
+        `The correct answer was ${array[count].correct}.`,
+    });
     if (count < 10 - 1) {
       setCount(count + 1);
 
       setPrecent(count + 2);
+
     } else {
 
       let path = `results`;
@@ -56,5 +60,7 @@ const Trivia = () => {
     </>
   );
 };
+
+
 
 export default Trivia;
