@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Card  } from "antd";
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -7,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,25 +18,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TriviaQuestions = ({ question, answer, rightAnswer }) => {
+
+
+const TriviaQuestions = ({ question, answers, rightAnswer }) => {
   const classes = useStyles();
   const [error, setError] = useState(false);
-  const [helperText, setHelperText] = useState('Choose wisely');
+  const [helperText, setHelperText] = useState('Shoot your shot');
   const [value, setValue] = useState('');
   const [score, setScore] = useState('');
-
   const handleRadioChange = (event) => {
     
     setValue(event.target.value);
     setHelperText(' ');
     setError(false);
+    if (value === rightAnswer) {
+
+      setScore(score+10)
+    } else {
+      setScore(score)
+    }
   };
 
-  let arr = [rightAnswer].concat(answer);
-  arr = arr.sort(() => Math.random() - 0.5);
-  let array = arr;
-
-  if (!question) return <div />;
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,11 +47,9 @@ const TriviaQuestions = ({ question, answer, rightAnswer }) => {
     if (value === rightAnswer) {
       setHelperText('You got it!');
       setError(false);
-      setScore(score+10)
     } else if (value !== rightAnswer) {
       setHelperText('Sorry, wrong answer!');
       setError(true);
-      setScore(score-10)
 
     } else {
       setHelperText('Please select an option.');
@@ -56,40 +57,26 @@ const TriviaQuestions = ({ question, answer, rightAnswer }) => {
     }
   };
 
-
   return (
-    <table align="center" style={{backgroundColor: "black"}}>
-      <tbody>
-        <tr>
-          <td>
-            <Card title={question} bordered={false}>
-            <div> 
+  <div align="center">
+    <form onSubmit={handleSubmit}>
+      <FormControl component="fieldset" error={error} className={classes.formControl}>
+        <FormLabel component="legend">{question}</FormLabel>
 
-            
-              
-              </div>
-              <form onSubmit={handleSubmit}>
-              <FormControl component="fieldset" error={error} className={classes.formControl}>
-                <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
-                {array.map(item => (
-                  <div key={item}>
-                  <FormControlLabel value={item} control={<Radio />} label={item} />
-                      
-                  </div>
-                ))}
-
-                </RadioGroup>
-                <FormHelperText>{helperText}</FormHelperText>
-                <Button type="submit" variant="outlined" color="primary" className={classes.button}>
-                  Check Answer
-                </Button>
-              </FormControl>
-            </form>    
-            </Card>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
+          {answers.map(answer =>(
+            <div key={answer}>
+            <FormControlLabel value={answer} control={<Radio />} label={answer} />
+            </div>
+            ))}
+          </RadioGroup>
+        <FormHelperText>{helperText}</FormHelperText>
+        <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+          Check Answer
+        </Button>
+      </FormControl>
+    </form>    
+  </div>
   );
 };
 

@@ -9,6 +9,7 @@ const HomePageHeader = () => {
   return (
     <header className="header">
       <h2>Tandem Quiz!</h2>
+     
     </header>
   );
 };
@@ -17,14 +18,15 @@ let triviaDataState = triviaData;
 triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
 let array = triviaDataState;
 
+
+
 const Trivia = () => {
-  // const [triviaDataState] = useState(triviaData);
-
-
   const [count, setCount] = useState(0);
   const [percent, setPrecent] = useState(1);
   const [buttonText, setButtonText] = useState("Next");
   const history = useHistory();
+  
+  if (!array) return <div/>
 
   function onClick() {
     notification.open({
@@ -46,13 +48,14 @@ const Trivia = () => {
     }
   }
 
+
   return (
     <>
       <HomePageHeader />
       <Progression percent={percent} />
       <TriviaQuestions
         question={array[count].question}
-        answer={array[count].incorrect}
+        answers={array[count].incorrect.concat(array[count].correct).sort(() => Math.random() - 0.5)}
         rightAnswer={array[count].correct}
       />
 
