@@ -25,21 +25,20 @@ const TriviaQuestions = ({ question, answers, rightAnswer }) => {
   const [error, setError] = useState(false);
   const [helperText, setHelperText] = useState('Shoot your shot');
   const [value, setValue] = useState('');
-  const [score, setScore] = useState('');
+  const [score, setScore] = useState(0);
+  const [disable, setDisable] = useState(false);
+  
   const handleRadioChange = (event) => {
     
     setValue(event.target.value);
     setHelperText(' ');
     setError(false);
-    if (value === rightAnswer) {
+    setDisable(true)
 
-      setScore(score+10)
-    } else {
-      setScore(score)
+    if (value === rightAnswer) {
+      setScore(score + 10)
     }
   };
-
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,6 +46,7 @@ const TriviaQuestions = ({ question, answers, rightAnswer }) => {
     if (value === rightAnswer) {
       setHelperText('You got it!');
       setError(false);
+      setScore(0)
     } else if (value !== rightAnswer) {
       setHelperText('Sorry, wrong answer!');
       setError(true);
@@ -57,6 +57,7 @@ const TriviaQuestions = ({ question, answers, rightAnswer }) => {
     }
   };
 
+  console.log("Score",score, value, rightAnswer)
   return (
   <div align="center">
     <form onSubmit={handleSubmit}>
@@ -66,7 +67,7 @@ const TriviaQuestions = ({ question, answers, rightAnswer }) => {
         <RadioGroup aria-label="quiz" name="quiz" value={value} onChange={handleRadioChange}>
           {answers.map(answer =>(
             <div key={answer}>
-            <FormControlLabel value={answer} control={<Radio />} label={answer} />
+            <FormControlLabel value={answer}  disabled={disable} control={<Radio />} label={answer} />
             </div>
             ))}
           </RadioGroup>

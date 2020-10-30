@@ -26,7 +26,7 @@ const Trivia = () => {
   const [buttonText, setButtonText] = useState("Next");
   const history = useHistory();
   
-  if (!array) return <div/>
+  if (!array) return <div />
 
   function onClick() {
     notification.open({
@@ -47,7 +47,6 @@ const Trivia = () => {
       history.push(path);
     }
   }
-
 
   return (
     <>
