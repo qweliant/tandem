@@ -3,7 +3,7 @@ import { useCountState } from "../ScoreContext";
 
 function CountDisplay() {
     const { count } = useCountState();
-    return <div>{`The current count is ${count}`}</div>;
+    return <h1>{`Your score is ${count}`}</h1>;
   }
 
 
@@ -12,7 +12,6 @@ const Results = () => {
 
         <div>
     <CountDisplay />
-    RESULTS PAGE
         </div>
 
 

@@ -23,15 +23,6 @@ const HomePageHeader = () => {
   );
 };
 
-function Counter() {
-  const dispatch = useCountDispatch();
-  return (
-    <button onClick={() => dispatch({ type: "increment" })}>
-      Increment count
-    </button>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3),
@@ -77,6 +68,7 @@ const Trivia = () => {
 
       setPrecent(count + 2);
       setDisable(false)
+      setError(false);
       setHelperText("Shoot your shot")
     } else {
       let path = `results`;
@@ -152,7 +144,6 @@ const Trivia = () => {
         </FormControl>
       </form>
       <Button onClick={onClick}> {buttonText} </Button>
-      <Counter />
     </div>
 
   );
