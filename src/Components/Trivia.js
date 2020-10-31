@@ -55,7 +55,7 @@ const Trivia = () => {
   const [value, setValue] = useState("");
   const dispatch = useCountDispatch();
   const [disable, setDisable] = useState(false);
-
+  
   if (!array) return <div />;
 
   function onClick() {
@@ -70,7 +70,13 @@ const Trivia = () => {
       setDisable(false)
       setError(false);
       setHelperText("Shoot your shot")
+      if (value === array[count].correct) {
+        dispatch({ type: "increment" })
+      }
     } else {
+      if (value === array[count].correct) {
+        dispatch({ type: "increment" })
+      } 
       let path = `results`;
       setButtonText("Done!");
       triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
@@ -91,7 +97,6 @@ const Trivia = () => {
     if (value === array[count].correct) {
       setHelperText("You got it!");
       setError(false);
-      dispatch({ type: "increment" })
     } else if (value !== array[count].correct) {
       setHelperText("Sorry, wrong answer!");
       setError(true);
