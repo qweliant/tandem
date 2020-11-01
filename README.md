@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# This part of the document outlines the app, it's functionality, and what it is missing
+
+## App Overview
+The quiz app is one page with very user friendly UI. When a user arrives, they can play the game as many times as they would like. The user can totally click through each example and get the right answer, then go through and score themselves. Otherwise, users should have fun with the trivia. The data for the quiz can be substitued with anything that has the same key/value structure, meaning question, incorrect, correct. The user will only be able to submit 10 answers, and can refresh at the end of the game to start another
+
+## Known Bugs
+There is an issue with the counter that requires some fine tuning. Since starting at 0, the app must end at 9, but this means the percentage will show 100 percent before the last question is submitted. This also effects submitting the last question for the quiz a bit unintuitive.
+
+## Future Work
+Perfect counter variable with useState and useDipatch. Move more functions outside of the compopnent. Add testing. Mock the data apprpriately for testing. 
