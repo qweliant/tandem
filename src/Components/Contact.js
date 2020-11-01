@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { createMedia } from "@artsy/fresnel";
 import PropTypes from "prop-types";
-import Trivia from "./Trivia";
 import {
-  Button,
   Container,
   Grid,
   Header,
@@ -12,27 +10,9 @@ import {
   Menu,
   Segment,
   Sidebar,
-  Visibility,
-  Divider,
+  Visibility
 } from "semantic-ui-react";
-import { useCountState } from "../ScoreContext";
 
-function CountDisplay() {
-  const { count } = useCountState();
-  return <h1>{`Your score is ${count}`}</h1>;
-}
-
-function refreshPage() {
-  window.location.reload(false);
-}
-
-function CounterReset() {
-  return (
-    <div>
-      <Button onClick={refreshPage}>Reset Game</Button>
-    </div>
-  );
-}
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -50,7 +30,7 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Tandem Quiz Challenge"
+      content="Contact"
       inverted
       style={{
         fontSize: mobile ? "2em" : "4em",
@@ -60,8 +40,20 @@ const HomepageHeading = ({ mobile }) => (
       }}
     />
     <Header
-      as="h2"
-      content="Quiz yourself on big facts"
+      as="a"
+      href="mailto:qweliantanner@gmail.com"
+      content="qweliantanner@gmail.com"
+      inverted
+      style={{
+        fontSize: mobile ? "1.5em" : "1.7em",
+        fontWeight: "normal",
+        marginTop: mobile ? "0.5em" : "1.5em",
+      }}
+    /> <br/>
+    <Header
+      as="a"
+      href="tel:864-986-1459"
+      content="864-986-1459"
       inverted
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
@@ -69,10 +61,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "0.5em" : "1.5em",
       }}
     />
-    <Button primary size="huge" href="#quiz">
-      Get Started
-      <Icon name="right arrow" />
-    </Button>
+    
   </Container>
 );
 
@@ -217,62 +206,25 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const HomepageLayout = () => (
+const Contact = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column textAlign="center">
             <Header as="h3" style={{ fontSize: "2em" }}>
-              Instructions
+              Khalil Gibran - The Prophet
             </Header>
             <p style={{ fontSize: "1.33em" }}>
               <h2>
               <i>  
-              <ul>You can only choose one answer</ul>
-                <ul>
-                  When you are ready to submit your answer, click "Check Answer"
-                  to see if it was correct or not
-                </ul>
-                <ul>
-                  Click next, and a card at the top right will pop up with the
-                  correct answer
-                </ul>
-                <ul>Your score will be available to you as you go</ul>
-                <ul>
-                  If you want to start again, click reset game and take the quiz
-                  again
-                </ul>
-                <ul>Good luck!</ul>
+              "You give but little when you give of your possessions. It is when you give of yourself that you truly give.""
                 </i>
               </h2>
             </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Segment>
-
-    <Segment style={{ padding: "8em 0em" }} vertical>
-      <Grid container stackable verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Header as="h3" id="quiz" style={{ fontSize: "2em" }}>
-              Tandem Quiz
-            </Header>
-
-            <CountDisplay />
-            <Trivia />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-      <Divider
-        as="h4"
-        className="header"
-        horizontal
-        style={{ margin: "3em 0em", textTransform: "uppercase" }}
-      >
-        <CounterReset />
-      </Divider>
     </Segment>
 
     <Segment inverted vertical style={{ padding: "5em 0em" }}>
@@ -305,4 +257,4 @@ const HomepageLayout = () => (
   </ResponsiveContainer>
 );
 
-export default HomepageLayout;
+export default Contact;
