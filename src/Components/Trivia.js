@@ -34,8 +34,6 @@ for (index = 0; index < array.length; index++) {
     .sort(() => Math.random() - 0.5);
 }
 
-
-
 const Trivia = () => {
   const [count, setCount] = useState(1);
   const [percent, setPrecent] = useState(1);

@@ -15,6 +15,7 @@ import {
   Visibility,
   Divider,
 } from "semantic-ui-react";
+import { Link } from "react-scroll";
 import { useCountState } from "../ScoreContext";
 
 function CountDisplay() {
@@ -69,9 +70,19 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "0.5em" : "1.5em",
       }}
     />
-    <Button primary size="huge" href="#quiz">
-      Get Started
-      <Icon name="right arrow" />
+    <Button primary style={{ backgroundColor: "#ffffff" }} size="huge">
+      <Link
+        activeClass="active"
+        to="instructions"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+        style={{ color: "#000000" }}
+      >
+        Get Started
+        <Icon name="right arrow" />
+      </Link>
     </Button>
   </Container>
 );
@@ -222,34 +233,49 @@ const HomepageLayout = () => (
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Header as="h3" style={{ fontSize: "2em" }}>
+          <Grid.Column>
+            <Header as="h3" style={{ fontSize: "2em" }} id="instructions">
               Instructions
             </Header>
             <p style={{ fontSize: "1.33em" }}>
               <h2>
-              <i>  
-              <ul>You can only choose one answer</ul>
-                <ul>
-                  When you are ready to submit your answer, click "Check Answer"
-                  to see if it was correct or not
-                </ul>
-                <ul>
-                  Click next, and a card at the top right will pop up with the
-                  correct answer
-                </ul>
-                <ul>Your score will be available to you as you go</ul>
-                <ul>
-                  If you want to start again, click reset game and take the quiz
-                  again
-                </ul>
-                <ul>Good luck!</ul>
+                <i>
+                  <ul>You can only choose one answer</ul>
+                  <ul>
+                    When you are ready to submit your answer, click "Check
+                    Answer" to see if it was correct or not
+                  </ul>
+                  <ul>
+                    Click next, and a card at the top right will pop up with the
+                    correct answer
+                  </ul>
+                  <ul>Your score will be available to you as you go</ul>
+                  <ul>
+                    If you want to start again, click reset game and take the
+                    quiz again
+                  </ul>
+                  Good luck!
                 </i>
               </h2>
             </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
+      <Button primary style={{ backgroundColor: "#ffffff" }} size="huge">
+        <Link
+          activeClass="active"
+          to="quiz"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          style={{ color: "#000000" }}
+        >
+          Begin the Quiz
+          <Icon name="right arrow" />
+        </Link>
+      </Button>
     </Segment>
 
     <Segment style={{ padding: "8em 0em" }} vertical>
@@ -282,9 +308,18 @@ const HomepageLayout = () => (
             <Grid.Column width={7}>
               <Header inverted as="h4" content="About" />
               <List link inverted>
-                <List.Item as="a" href="/contact">Contact</List.Item>
-                <List.Item as="a" href="https://www.goodreads.com/review/list/96621682?ref=nav_mybooks">Goodreads</List.Item>
-                <List.Item as="a" href="https://twitter.com/Qwelian_Tanner">Twitter</List.Item>
+                <List.Item as="a" href="/contact">
+                  Contact
+                </List.Item>
+                <List.Item
+                  as="a"
+                  href="https://www.goodreads.com/review/list/96621682?ref=nav_mybooks"
+                >
+                  Goodreads
+                </List.Item>
+                <List.Item as="a" href="https://twitter.com/Qwelian_Tanner">
+                  Twitter
+                </List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
