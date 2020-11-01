@@ -17,6 +17,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-scroll";
 import { useCountState } from "../ScoreContext";
+import {NavLink} from 'react-router-dom'
 
 function CountDisplay() {
   const { count } = useCountState();
@@ -309,8 +310,10 @@ const HomepageLayout = () => (
             <Grid.Column width={7}>
               <Header inverted as="h4" content="About" />
               <List link inverted>
-                <List.Item as="a" href="/contact">
-                  Contact
+                <List.Item as="a">
+                <NavLink to="/contact">
+                Contact
+                </NavLink>
                 </List.Item>
                 <List.Item
                   as="a"
