@@ -1,7 +1,6 @@
 import React from 'react'
-import { useCountState } from "../ScoreContext";
+import { useCountState, useCountDispatch } from "../ScoreContext";
 import { NavLink } from 'react-router-dom';
-import { useCountDispatch } from "../ScoreContext";
 
 function CountDisplay() {
     const { count } = useCountState();

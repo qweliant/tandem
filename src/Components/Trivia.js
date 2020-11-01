@@ -15,14 +15,6 @@ import Button from "@material-ui/core/Button";
 import FormLabel from "@material-ui/core/FormLabel";
 
 
-const HomePageHeader = () => {
-  return (
-    <header className="header">
-      <h2>Tandem Quiz!</h2>
-    </header>
-  );
-};
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3),
@@ -110,7 +102,6 @@ const Trivia = () => {
 
    
     <div align="center">
-      <HomePageHeader />
       <Progression percent={percent} />
       <form onSubmit={handleSubmit}>
         <FormControl

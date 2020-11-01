@@ -4,7 +4,6 @@ import Home from "./Components/Home";
 import Trivia from "./Components/Trivia";
 import Results from "./Components/Results";
 import Error from "./Components/Error";
-import Navigation from "./Components/Nav";
 
 
 
@@ -15,7 +14,6 @@ function App() {
 
         <BrowserRouter>
           <div>
-            <Navigation />
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/trivia" component={Trivia} />
