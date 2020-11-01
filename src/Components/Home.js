@@ -261,7 +261,8 @@ const HomepageLayout = () => (
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
+      <br/>
+      <br/>
       <Button primary style={{ backgroundColor: "#ffffff" }} size="huge">
         <Link
           activeClass="active"
