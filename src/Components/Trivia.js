@@ -37,7 +37,7 @@ for (index = 0; index < array.length; index++) {
 
 
 const Trivia = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [percent, setPrecent] = useState(1);
   const [buttonText, setButtonText] = useState("Next");
   const history = useHistory();
@@ -55,10 +55,10 @@ const Trivia = () => {
       message: "So what it is...",
       description: `The correct answer was ${array[count].correct}.`,
     });
-    if (count < 10 - 1) {
+    if (count < 10) {
       setCount(count + 1);
 
-      setPrecent(count + 2);
+      setPrecent(count + 1);
       setDisable(false)
       setError(false);
       setHelperText("Shoot your shot")
@@ -69,9 +69,8 @@ const Trivia = () => {
       if (value === array[count].correct) {
         dispatch({ type: "increment" })
       } 
-      let path = `results`;
+      let path = "/";
       setButtonText("Done!");
-      triviaDataState = triviaDataState.sort(() => Math.random() - 0.5);
       history.push(path);
     }
   }

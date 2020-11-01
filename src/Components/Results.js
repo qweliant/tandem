@@ -15,7 +15,7 @@ const Results = () => {
 
         <div>
             <CountDisplay />
-            <NavLink to="/trivia" onClick={() => dispatch({ type: "over" })}><h3>Take Again?</h3></NavLink> 
+            <NavLink to="/" onClick={() => dispatch({ type: "over" })}><h3>Take Again?</h3></NavLink> 
 
         </div>
 

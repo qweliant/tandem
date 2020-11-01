@@ -11,9 +11,6 @@ function countReducer(state, action) {
     case 'decrement': {
       return {count: state.count - 1}
     }
-    case 'over':{
-      return {count: state.count = 0}
-    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }

@@ -13,9 +13,10 @@ import {
   Segment,
   Sidebar,
   Visibility,
+  Divider,
 } from "semantic-ui-react";
-import { useCountState, useCountDispatch } from "../ScoreContext";
-import { NavLink } from 'react-router-dom';
+import { useCountState } from "../ScoreContext";
+// import { NavLink, BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // const Home = () =>{
 //     return (
@@ -24,11 +25,11 @@ import { NavLink } from 'react-router-dom';
 //           Greetings!
 //         </header>
 //         <h2> The rules are:
-//         <ul>You can only choose one answer</ul>
-//         <ul>When you are ready to submit, click "Check Answer" to see if it was correct or not</ul>
-//         <ul>Click next, and a card at the top right will pop up with the correct answer</ul>
-//         <ul>At the end of the round, you will see your score</ul>
-//         <ul>Good luck!</ul>
+//         <li>You can only choose one answer</li>
+//         <li>When you are ready to submit, click "Check Answer" to see if it was correct or not</li>
+//         <li>Click next, and a card at the top right will pop up with the correct answer</li>
+//         <li>At the end of the round, you will see your score</li>
+//         <li>Good luck!</ul>
 //         </h2>
 //         <h2>To get started, click on trivia above.</h2>
 //       </div>
@@ -36,17 +37,20 @@ import { NavLink } from 'react-router-dom';
 // };
 
 // export default Home;
+
 function CountDisplay() {
   const { count } = useCountState();
   return <h1>{`Your score is ${count}`}</h1>;
 }
 
+function refreshPage() {
+  window.location.reload(false);
+}
+
 function CounterReset() {
-  const dispatch = useCountDispatch();
   return (
     <div>
-      
-      <NavLink to="/" onClick={() => dispatch({ type: "over" })}><Button>Reset Game</Button></NavLink> 
+      <Button onClick={refreshPage}>Reset Game</Button>
     </div>
   );
 }
@@ -86,7 +90,7 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "0.5em" : "1.5em",
       }}
     />
-    <Button primary size="huge">
+    <Button primary size="huge" href="#quiz">
       Get Started
       <Icon name="right arrow" />
     </Button>
@@ -132,11 +136,11 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as="a">Portfolio</Menu.Item>
-                <Menu.Item as="a">Source Code</Menu.Item>
+              <Menu.Item as="a" href="/">Home</Menu.Item>
+              <Menu.Item as="a" href="https://www.qwelian.com">
+                Portfolio
+              </Menu.Item>
+              <Menu.Item as="a" href="https://github.com/qweliant/tandem">Source</Menu.Item>
               </Container>
             </Menu>
             <HomepageHeading />
@@ -175,11 +179,11 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as="a" active>
-              Home
+            <Menu.Item as="a" href="/">Home</Menu.Item>
+            <Menu.Item as="a" href="https://www.qwelian.com">
+              Portfolio
             </Menu.Item>
-            <Menu.Item as="a">Portfolio</Menu.Item>
-            <Menu.Item as="a">Source</Menu.Item>
+            <Menu.Item as="a" href="https://github.com/qweliant/tandem">Source</Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -193,14 +197,6 @@ class MobileContainer extends Component {
                 <Menu inverted pointing secondary size="large">
                   <Menu.Item onClick={this.handleToggle}>
                     <Icon name="sidebar" />
-                  </Menu.Item>
-                  <Menu.Item position="right">
-                    <Button as="a" inverted>
-                      Log in
-                    </Button>
-                    <Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-                      Sign Up
-                    </Button>
                   </Menu.Item>
                 </Menu>
               </Container>
@@ -240,23 +236,23 @@ const HomepageLayout = () => (
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
           <Grid.Column textAlign="center">
-            <Header as="h3" style={{ fontSize: "2em" }}>
-              "Tandem Quiz"
+            <Header as="h3" id="quiz" style={{ fontSize: "2em" }}>
+              Tandem Quiz
             </Header>
+
             <CountDisplay />
             <Trivia />
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Segment>
-
-    <Segment style={{ padding: "8em 0em" }} vertical>
-      <Container text>
-        <Header as="h3" style={{ fontSize: "2em" }}>
-          <CounterReset />
-        </Header>
-
-      </Container>
+      <Divider
+        as="h4"
+        className="header"
+        horizontal
+        style={{ margin: "3em 0em", textTransform: "uppercase" }}
+      >
+        <CounterReset />
+      </Divider>
     </Segment>
 
     <Segment inverted vertical style={{ padding: "5em 0em" }}>
@@ -266,18 +262,20 @@ const HomepageLayout = () => (
             <Grid.Column width={7}>
               <Header inverted as="h4" content="About" />
               <List link inverted>
-                <List.Item as="a">Contact Us</List.Item>
-                <List.Item as="a">Religious Ceremonies</List.Item>
-                <List.Item as="a">Gazebo Plans</List.Item>
+                <List.Item as="a">Contact</List.Item>
+                <List.Item as="a">Goodreads</List.Item>
+                <List.Item as="a">Twitter</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as="h4" inverted>
-                Edited by Qwelian Tanner. Template provided by <br/> <a href="https://react.semantic-ui.com/layouts/homepage/">Sementic-UI</a>
+                Edited by Qwelian Tanner. Template provided by <br />{" "}
+                <a href="https://react.semantic-ui.com/layouts/homepage/">
+                  Sementic-UI
+                </a>
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could
-                help re-engage users.
+                If you have any questions contact me qweliantanner@gmail.com
               </p>
             </Grid.Column>
           </Grid.Row>
