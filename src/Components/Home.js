@@ -16,27 +16,6 @@ import {
   Divider,
 } from "semantic-ui-react";
 import { useCountState } from "../ScoreContext";
-// import { NavLink, BrowserRouter, Route, Switch } from 'react-router-dom';
-
-// const Home = () =>{
-//     return (
-//       <div>
-//         <header className="header">
-//           Greetings!
-//         </header>
-//         <h2> The rules are:
-//         <li>You can only choose one answer</li>
-//         <li>When you are ready to submit, click "Check Answer" to see if it was correct or not</li>
-//         <li>Click next, and a card at the top right will pop up with the correct answer</li>
-//         <li>At the end of the round, you will see your score</li>
-//         <li>Good luck!</ul>
-//         </h2>
-//         <h2>To get started, click on trivia above.</h2>
-//       </div>
-//     );
-// };
-
-// export default Home;
 
 function CountDisplay() {
   const { count } = useCountState();
@@ -136,11 +115,15 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-              <Menu.Item as="a" href="/">Home</Menu.Item>
-              <Menu.Item as="a" href="https://www.qwelian.com">
-                Portfolio
-              </Menu.Item>
-              <Menu.Item as="a" href="https://github.com/qweliant/tandem">Source</Menu.Item>
+                <Menu.Item as="a" href="/" active>
+                  Home
+                </Menu.Item>
+                <Menu.Item as="a" href="https://www.qwelian.com">
+                  Portfolio
+                </Menu.Item>
+                <Menu.Item as="a" href="https://github.com/qweliant/tandem">
+                  Source
+                </Menu.Item>
               </Container>
             </Menu>
             <HomepageHeading />
@@ -179,11 +162,15 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as="a" href="/">Home</Menu.Item>
+            <Menu.Item as="a" href="/">
+              Home
+            </Menu.Item>
             <Menu.Item as="a" href="https://www.qwelian.com">
               Portfolio
             </Menu.Item>
-            <Menu.Item as="a" href="https://github.com/qweliant/tandem">Source</Menu.Item>
+            <Menu.Item as="a" href="https://github.com/qweliant/tandem">
+              Source
+            </Menu.Item>
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -232,6 +219,37 @@ ResponsiveContainer.propTypes = {
 
 const HomepageLayout = () => (
   <ResponsiveContainer>
+    <Segment style={{ padding: "8em 0em" }} vertical>
+      <Grid container stackable verticalAlign="middle">
+        <Grid.Row>
+          <Grid.Column textAlign="center">
+            <Header as="h3" style={{ fontSize: "2em" }}>
+              Instructions
+            </Header>
+            <p style={{ fontSize: "1.33em" }}>
+              <h2>
+                <ul>You can only choose one answer</ul>
+                <ul>
+                  When you are ready to submit your answer, click "Check Answer"
+                  to see if it was correct or not
+                </ul>
+                <ul>
+                  Click next, and a card at the top right will pop up with the
+                  correct answer
+                </ul>
+                <ul>Your score will be available to you as you go</ul>
+                <ul>
+                  If you want to start again, click reset game and take the quiz
+                  again
+                </ul>
+                <ul>Good luck!</ul>
+              </h2>
+            </p>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
+
     <Segment style={{ padding: "8em 0em" }} vertical>
       <Grid container stackable verticalAlign="middle">
         <Grid.Row>
